@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8">
+        <title>我國高級中等學校應屆畢業生升學情形</title>
+        <link href="css/test.css" rel="stylesheet">
+        <!--<link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.css">-->
+    </head>
+    <body>
+        <!--<script src="js/jQuery.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+        <h1>103學年畢業生升學情形</h1>
+        <div class="wrapper">
+            <canvas id="chart103"></canvas>
+        </div>
+
+        <h1>104學年畢業生升學情形</h1>
+        <div class="wrapper">
+            <canvas id="chart104"></canvas>
+        </div>
+
+        <h1>105學年畢業生升學情形</h1>
+        <div class="wrapper">
+            <canvas id="chart105"></canvas>
+        </div>
+
+        <h1>106學年畢業生升學情形</h1>
+        <div class="wrapper">
+            <canvas id="chart106"></canvas>
+        </div>
+
+        <h1>107學年畢業生升學情形</h1>
+        <div class="wrapper">
+            <canvas id="chart107"></canvas>
+        </div>
+
+        <h1>108學年畢業生升學情形</h1>
+        <div class="wrapper">
+            <canvas id="chart108"></canvas>
+        </div>
+
+        <h1>109學年畢業生升學情形</h1>
+        <div class="wrapper">
+            <canvas id="chart109"></canvas>
+        </div>
+
+        <script>
+            /*d3.csv("/ByEstablishment/102.csv", function(data) {
+                console.log(data);
+            });*/
+
+            //
+            var ctx = document.getElementById('chart103').getContext('2d');
+            //
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['普通科(國立)', '普通科(縣市立)', '普通科(私立)', '專業群(職業)科(國立)', '專業群(職業)科(縣市立)', '專業群(職業)科(私立)', 
+                             '綜合高中(國立)', '綜合高中(縣市立)', '綜合高中(私立)', '實用技能學程(國立)', '實用技能學程(縣市立)', '實用技能學程(私立)', 
+                             '進修部(學校)(國立)', '進修部(學校)(縣市立)', '進修部(學校)(私立)'],
+                    datasets: [{
+                        label: '升學情況',
+                        backgroundColor: "#caf270",
+                        data: [96.49002458, 96.20644976, 96.16479769, 86.61678595, 93.95340566, 75.05818244, 
+                               92.11634905, 95.34090909, 90.88130915, 62.70491803, 57.60598504, 47.77895605, 
+                               44.36074919, 52.50320924, 24.11848793],
+                    }, {
+                        label: '就業情況',
+                        backgroundColor: "#008d93",
+                        data: [0.763162408, 0.851809195, 0.917495694, 7.846454131, 2.952160768, 16.99069081, 
+                               3.72116349, 1.647727273, 5.136041009, 26.37587822, 29.17705736, 39.2718275, 
+                               40.59446254, 31.32220796, 60.2525413],
+                    }, {
+                        label: '未升學與未就業情況',
+                        backgroundColor: "#2e5468",
+                        data: [2.532441548, 2.69459641, 2.664604352, 4.824333116, 2.596478748, 7.189078731, 
+                               3.540621866, 2.727272727, 3.785488959, 9.25058548, 10.2244389, 11.93590197, 
+                               12.05211726, 10.97560976, 13.75476493],
+                    }],
+                },
+            options: {
+                tooltips: {
+                displayColors: true,
+                callbacks:{
+                    mode: 'x',
+                },
+                },
+                scales: {
+                xAxes: [{
+                    stacked: true,
+                    gridLines: {
+                    display: false,
+                    }
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                    beginAtZero: true,
+                    },
+                    type: 'linear',
+                }]
+                },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: { position: 'bottom' },
+                }
+            });
+
+            ctx = document.getElementById('chart104').getContext('2d');
+            //
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['普通科(國立)', '普通科(縣市立)', '普通科(私立)', '專業群(職業)科(國立)', '專業群(職業)科(縣市立)', '專業群(職業)科(私立)', 
+                             '綜合高中(國立)', '綜合高中(縣市立)', '綜合高中(私立)', '實用技能學程(國立)', '實用技能學程(縣市立)', '實用技能學程(私立)', 
+                             '進修部(學校)(國立)', '進修部(學校)(縣市立)', '進修部(學校)(私立)'],
+                    datasets: [{
+                        label: '升學情況',
+                        backgroundColor: "#caf270",
+                        data: [96.38412773, 96.63247821, 97.02285361, 85.75920042, 91.33738602, 74.03058262, 
+                               92.77426766, 94.73538376, 89.38716306, 56.56957929, 57.19178082, 42.65095339, 
+                               39.79567593, 56.06673407, 22.33288642],
+                    }, {
+                        label: '就業情況',
+                        backgroundColor: "#008d93",
+                        data: [0.686780934, 0.687908213, 0.638254066, 8.313476304, 3.745753621, 18.01567843, 
+                               4.032165422, 2.133555001, 6.406382207, 30.55016181, 28.08219178, 42.51853814, 
+                               46.56688049, 28.10920121, 61.52078146],
+                    }, {
+                        label: '未升學與未就業情況',
+                        backgroundColor: "#2e5468",
+                        data: [2.56515614, 2.177962103, 2.235948116, 4.898067249, 3.709994636, 6.726240403, 
+                               2.734060885, 2.521474093, 3.831741811, 9.741100324, 8.904109589, 13.12235169, 
+                               11.35661677, 7.987866532, 14.02987933],
+                    }],
+                },
+            options: {
+                tooltips: {
+                displayColors: true,
+                callbacks:{
+                    mode: 'x',
+                },
+                },
+                scales: {
+                xAxes: [{
+                    stacked: true,
+                    gridLines: {
+                    display: false,
+                    }
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                    beginAtZero: true,
+                    },
+                    type: 'linear',
+                }]
+                },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: { position: 'bottom' },
+                }
+            });
+
+            ctx = document.getElementById('chart109').getContext('2d');
+            //
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['普通科(國立)', '普通科(縣市立)', '普通科(私立)', '專業群(職業)科(國立)', '專業群(職業)科(縣市立)', '專業群(職業)科(私立)', 
+                             '綜合高中(國立)', '綜合高中(縣市立)', '綜合高中(私立)', '實用技能學程(國立)', '實用技能學程(縣市立)', '實用技能學程(私立)', 
+                             '進修部(學校)(國立)', '進修部(學校)(縣市立)', '進修部(學校)(私立)'],
+                    datasets: [{
+                        label: '升學情況',
+                        backgroundColor: "#caf270",
+                        data: [96.89411562, 97.12212656, 97.03874497, 84.760225, 92.97960912, 77.50822267, 
+                               95.09407002, 95.87118084, 87.92581378, 63.98104265, 64.8, 48.60593145, 
+                               35.9045505, 44.91064491, 22.95603037],
+                    }, {
+                        label: '就業情況',
+                        backgroundColor: "#008d93",
+                        data: [1.141552511, 0.896423183, 0.827343008, 10.84469444, 4.374514923, 15.56989886, 
+                               2.762562515, 2.023121387, 8.781226344, 25.11848341, 27.73333333, 39.05167821, 
+                               52.94117647, 37.06293706, 59.79162988],
+                    }, {
+                        label: '未升學與未就業情況',
+                        backgroundColor: "#2e5468",
+                        data: [1.800637546, 1.668589687, 1.96211402, 3.451234627, 2.243702815, 5.841185053, 
+                               1.405096452, 1.445086705, 2.649507949, 6.898367562, 6.4, 10.53098917, 
+                               9.433962264, 16.08391608, 11.35440579],
+                    }],
+                },
+            options: {
+                tooltips: {
+                displayColors: true,
+                callbacks:{
+                    mode: 'x',
+                },
+                },
+                scales: {
+                xAxes: [{
+                    stacked: true,
+                    gridLines: {
+                    display: false,
+                    }
+                }],
+                yAxes: [{
+                    stacked: true,
+                    ticks: {
+                    beginAtZero: true,
+                    },
+                    type: 'linear',
+                }]
+                },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: { position: 'bottom' },
+                }
+            });
+
+
+            /*var chart = new Chart(ctx, {
+                type: 'bar', //圖表類型
+                data: {
+                    //標題
+                    labels: ['普通科(國立)', '普通科(縣市立)', '普通科(私立)', '專業群(職業)科(國立)', '專業群(職業)科(縣市立)', '專業群(職業)科(私立)', 
+                             '綜合高中(國立)', '綜合高中(縣市立)', '綜合高中(私立)', '實用技能學程(國立)', '實用技能學程(縣市立)', '實用技能學程(私立)', 
+                             '進修部(學校)(國立)', '進修部(學校)(縣市立)', '進修部(學校)(私立)'],
+                    datasets: [{
+                    data: [96.49002458, 96.20644976, 96.16479769, 86.61678595, 93.95340566, 75.05818244, 92.11634905, 95.34090909, 90.88130915, 62.70491803, 57.60598504, 47.77895605, 44.36074919, 52.50320924, 24.11848793], //資料
+                    //圖表背景色
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    //圖表外框線色
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    //外框線寬度
+                    borderWidth: 1
+                    }]
+                }/*,
+                options: {
+                    scales: {
+                    yAxes: [{
+                        ticks: {
+                        beginAtZero: true,
+                        responsive: true //符合響應式
+                        }
+                    }]
+                    }
+                }
+                });*/
+        </script>
+    </body>
+</html>
