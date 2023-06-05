@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8">
+        <title>我國高級中等學校應屆畢業生升學情形</title>
+        <link href="css/test.css" rel="stylesheet">
+        <!--<link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.css">-->
+    </head>
+    <body>
+        <!--<script src="js/jQuery.js"></script>
+	    <script src="js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+        <h1>升學情況</h1>
+        <div class="wrapper">
+            <canvas id="line1"></canvas>
+        </div>
+
+        <h1>就業情況</h1>
+        <div class="wrapper">
+            <canvas id="line2"></canvas>
+        </div>
+
+        <h1>未升學與未就業情況</h1>
+        <div class="wrapper">
+            <canvas id="line3"></canvas>
+        </div>
+
+        <script>
+            var ctx = document.getElementById('line1').getContext('2d');
+            //
+            var myChart = new Chart(ctx, {
+                type : 'line',
+                data : {
+                    labels : [103, 104, 105, 106, 107, 108, 109],
+                    datasets : [
+                            {
+                                data : [96.49002458, 96.38412773, 96.62560064, 94.23902343, 92.83085356, 94.78467333, 96.89411562],
+                                label : "普通科(國立)",
+                                borderColor : "#FF0000",
+                                fill : false
+                            },
+                            {
+                                data : [96.20644976, 96.63247821, 97.0231454, 95.31730324, 93.97377496, 95.74394163, 97.12212656],
+                                label : "普通科(縣市立)",
+                                borderColor : "#B30000",
+                                fill : false
+                            },
+                            {
+                                data : [96.16479769, 97.02285361, 96.4357245, 94.95513675, 93.30346887, 95.37072064, 97.03874497],
+                                label : "普通科(私立)",
+                                borderColor : "#FF4D4D",
+                                fill : false
+                            },
+                            {
+                                data : [86.61678595, 85.75920042, 83.5865271, 82.44182008, 83.8094832, 83.9922112, 84.760225],
+                                label : "專業群(職業)科(國立)",
+                                borderColor : "#00FF00",
+                                fill : false
+                            },
+                            {
+                                data : [93.95340566, 91.33738602, 91.18679775, 90.70852496, 90.46267573, 90.82403261, 92.97960912],
+                                label : "專業群(職業)科(縣市立)",
+                                borderColor : "#006600",
+                                fill : false
+                            },
+                            {
+                                data : [75.05818244, 74.03058262, 74.615978, 75.65051363, 74.97730193, 75.50575436, 77.50822267],
+                                label : "專業群(職業)科(私立)",
+                                borderColor : "#3cba9f",
+                                fill : false
+                            },
+                            {
+                                data : [92.11634905, 92.77426766, 92.4970344, 90.32476319, 89.52879581, 92.45998315, 95.09407002],
+                                label : "綜合高中(國立)",
+                                borderColor : "#0000FF",
+                                fill : false
+                            },
+                            {
+                                data : [95.34090909, 94.73538376, 95.40260431, 94.18429003, 93.90342595, 93.29545455, 95.87118084],
+                                label : "綜合高中(縣市立)",
+                                borderColor : "#0000B3",
+                                fill : false
+                            },
+                            {
+                                data : [90.88130915, 89.38716306, 87.65165365, 87.52096612, 87.00339389, 87.41701871, 87.92581378],
+                                label : "綜合高中(私立)",
+                                borderColor : "#4D4DFF",
+                                fill : false
+                            }
+                        ]
+                }
+            });
+
+            var ctx = document.getElementById('line2').getContext('2d');
+            // 
+            var myChart = new Chart(ctx, {
+                type : 'line',
+                data : {
+                    labels : [103, 104, 105, 106, 107, 108, 109],
+                    datasets : [
+                            {
+                                data : [0.763162408, 0.686780934, 0.740633693, 1.228588305, 1.088488645, 1.080727035, 1.141552511],
+                                label : "普通科(國立)",
+                                borderColor : "#FF0000",
+                                fill : false
+                            },
+                            {
+                                data : [0.851809195, 0.687908213, 0.735905045, 0.949593633, 0.972795777, 0.82949709, 0.896423183],
+                                label : "普通科(縣市立)",
+                                borderColor : "#B30000",
+                                fill : false
+                            },
+                            {
+                                data : [0.917495694, 0.638254066, 0.739832414, 0.965730965, 0.980166935, 0.799129941, 0.827343008],
+                                label : "普通科(私立)",
+                                borderColor : "#FF4D4D",
+                                fill : false
+                            },
+                            {
+                                data : [7.846454131, 8.313476304, 9.465238464, 11.30166725, 10.8178407, 11.14884753, 10.84469444],
+                                label : "專業群(職業)科(國立)",
+                                borderColor : "#00FF00",
+                                fill : false
+                            },
+                            {
+                                data : [2.952160768, 3.745753621, 5.210674157, 5.178964207, 5.649792093, 6.141816481, 4.374514923],
+                                label : "專業群(職業)科(縣市立)",
+                                borderColor : "#006600",
+                                fill : false
+                            },
+                            {
+                                data : [16.99069081, 18.01567843, 18.0725114, 17.82778155, 18.35717345, 17.93742133, 15.56989886],
+                                label : "專業群(職業)科(私立)",
+                                borderColor : "#3cba9f",
+                                fill : false
+                            },
+                            {
+                                data : [3.72116349, 4.032165422, 3.855278766, 5.378890392, 5.061082024, 3.854254423, 2.762562515],
+                                label : "綜合高中(國立)",
+                                borderColor : "#0000FF",
+                                fill : false
+                            },
+                            {
+                                data : [1.647727273, 2.133555001, 2.205686952, 2.416918429, 2.131103318, 3.068181818, 2.023121387],
+                                label : "綜合高中(縣市立)",
+                                borderColor : "#0000B3",
+                                fill : false
+                            },
+                            {
+                                data : [5.136041009,6.406382207, 7.944158218, 8.285810131, 9.303254143, 9.565479783, 8.781226344],
+                                label : "綜合高中(私立)",
+                                borderColor : "#4D4DFF",
+                                fill : false
+                            }
+                        ]
+                }
+            });
+
+            var ctx = document.getElementById('line3').getContext('2d');
+            //
+            var myChart = new Chart(ctx, {
+                type : 'line',
+                data : {
+                    labels : [103, 104, 105, 106, 107, 108, 109],
+                    datasets : [
+                            {
+                                data : [2.532441548, 2.609180559, 2.398930597, 4.292183501, 5.301487862, 3.819387588, 1.835099509],
+                                label : "普通科(國立)",
+                                borderColor : "#FF0000",
+                                fill : false
+                            },
+                            {
+                                data : [2.69459641, 2.232597412, 1.937091988, 3.503600455, 4.772446677, 3.261530444, 1.728499157],
+                                label : "普通科(縣市立)",
+                                borderColor : "#B30000",
+                                fill : false
+                            },
+                            {
+                                data : [2.664604352, 2.244183652, 2.211322297, 3.924182912, 5.559384333, 3.778135048, 1.99376102],
+                                label : "普通科(私立)",
+                                borderColor : "#FF4D4D",
+                                fill : false
+                            },
+                            {
+                                data : [4.824333116, 5.156208631, 6.048140757, 5.296978117, 4.507078288, 4.003079292, 3.818285823],
+                                label : "專業群(職業)科(國立)",
+                                borderColor : "#00FF00",
+                                fill : false
+                            },
+                            {
+                                data : [2.596478748, 3.897729304, 3.251404494, 3.605945478, 3.491518712, 2.887121567, 2.504762577],
+                                label : "專業群(職業)科(縣市立)",
+                                borderColor : "#006600",
+                                fill : false
+                            },
+                            {
+                                data : [7.189078731, 7.187560488, 6.776562919, 5.858962019, 6.045396146, 5.916202122, 6.115686129],
+                                label : "專業群(職業)科(私立)",
+                                borderColor : "#3cba9f",
+                                fill : false
+                            },
+                            {
+                                data : [3.540621866, 2.791499138, 2.965599051, 3.721244926, 4.556912934, 2.969671441, 1.45272684],
+                                label : "綜合高中(國立)",
+                                borderColor : "#0000FF",
+                                fill : false
+                            },
+                            {
+                                data : [2.727272727, 2.604599612, 2.258836035, 2.794561934, 3.34502293, 3.484848485, 1.56895128],
+                                label : "綜合高中(縣市立)",
+                                borderColor : "#0000B3",
+                                fill : false
+                            },
+                            {
+                                data : [3.785488959, 3.976791974, 4.055176999, 3.840992955, 3.613495708, 2.866626433, 2.87660863],
+                                label : "綜合高中(私立)",
+                                borderColor : "#4D4DFF",
+                                fill : false
+                            }
+                        ]
+                }
+            });
+        </script>
+    </body>
+</html>
