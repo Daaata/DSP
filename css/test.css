@@ -21,6 +21,7 @@ body, html{
   canvas{
     background:#fff;
     height:400px;
+    width: 200px;
   }
   
   h1{
